@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class Lc42 {
     public static void main(String[] args) {
         int[] height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
-        Solution42_3 solution42 = new Solution42_3();
+        Solution42_1 solution42 = new Solution42_1();
         System.out.println(solution42.trap(height));
     }
 }
@@ -31,6 +31,7 @@ class Solution42_1 {
         }
         return res;
     }
+
 }
 
 /**
