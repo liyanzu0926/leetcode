@@ -10,7 +10,7 @@ public class Lc49 {
     }
 }
 
-class Solution49_1 {
+class Solution49_1{
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> map = new HashMap<>();
         for (String str : strs) {
