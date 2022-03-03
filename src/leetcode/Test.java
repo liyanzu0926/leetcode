@@ -2,32 +2,23 @@ package leetcode;
 
 
 import java.io.*;
+import java.util.Arrays;
 
 public class Test {
     public static void main(String[] args) {
-        MyThread myThread = new MyThread();
-        myThread.start();
-        try {
-            myThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-//        try {
-//            Thread.sleep(2000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-        for (int i = 0; i < 100; i++) {
-            System.out.println(i);
+        int[] v = new int[5];
+        for (int i = 0; i < 3; i++) {
+            f(v);
+            System.out.println(Arrays.toString(v));
         }
     }
+
+    private static void f(int[] v) {
+        for (int i = 0; i < v.length; i++) {
+            v[i] += 1;
+        }
+    }
+
+
 }
 
-class MyThread extends Thread{
-    @Override
-    public void run() {
-        for (int i = 0; i < 100; i++) {
-            System.out.println("_________" + i);
-        }
-    }
-}
