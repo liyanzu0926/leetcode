@@ -1,12 +1,13 @@
 package leetcode;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
 
 public class Lc84 {
     public static void main(String[] args) {
         int[] heights = {2, 0, 2};
-        System.out.println(new Solution84_2().largestRectangleArea(heights));
+        System.out.println(new Solution84_3().largestRectangleArea(heights));
     }
 }
 
@@ -34,7 +35,7 @@ class Solution84_1 {
 }
 
 /**
- * 单调栈
+ * 单调栈 + 哨兵
  */
 class Solution84_2 {
     public int largestRectangleArea(int[] heights) {
@@ -57,6 +58,34 @@ class Solution84_2 {
                 area = Math.max(area, height * weith);
             }
             stack.push(i);
+        }
+        return area;
+    }
+}
+
+/**
+ * 单调栈
+ */
+class Solution84_3 {
+    public int largestRectangleArea(int[] heights) {
+        int len = heights.length;
+        if (len == 0) return 0;
+        if (len == 1) return heights[0];
+        int[] left = new int[len];
+        int[] right = new int[len];
+        Arrays.fill(right, len);
+        Deque<Integer> stack = new ArrayDeque<>();
+        for (int i = 0; i < len; i++) {
+            while (!stack.isEmpty() && heights[stack.peek()] > heights[i]){
+                right[stack.peek()] = i;
+                stack.pop();
+            }
+            left[i] = (stack.isEmpty() ? -1 : stack.peek());
+            stack.push(i);
+        }
+        int area = 0;
+        for (int i = 0; i < len; i++) {
+            area = Math.max(area, (right[i] - left[i] - 1) * heights[i]);
         }
         return area;
     }
