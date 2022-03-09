@@ -1,8 +1,6 @@
 package leetcode;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Lc128 {
     public static void main(String[] args) {
@@ -14,18 +12,22 @@ public class Lc128 {
 
 class Solution128_1 {
     public int longestConsecutive(int[] nums) {
+        Set<Integer> set = new HashSet<>();
         int res = 0;
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            map.put(nums[i], 1);
+        for (int num : nums) {
+            set.add(num);
         }
-        for (int i = 0; i < nums.length; i++) {
-            int key = nums[i] + 1;
-            while (map.containsKey(key)) {
-                int newValue = map.get(key) + 1;
-                res = Math.max(res, newValue);
-                map.put(key, newValue);
-                key++;
+        for (Integer num : set) {
+            if (set.contains(num - 1)){
+                continue;
+            }else {
+                int key = num + 1;
+                int count = 1;
+                while (set.contains(key)){
+                    count++;
+                    key++;
+                }
+                res = Math.max(res, count);
             }
         }
         return res;
