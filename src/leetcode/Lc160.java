@@ -4,7 +4,7 @@ public class Lc160 {
 
 }
 
-public class Solution160_1 {
+class Solution160_1 {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode p = headA;
         ListNode q = headB;
