@@ -9,7 +9,9 @@ public class TreeUtils {
         if (index >= root.length) {
             return null;
         }
-        if (root[index] == null) return null;
+        if (root[index] == null) {
+            return null;
+        }
         TreeNode treeNode = new TreeNode(root[index]);
         treeNode.left = createTree(root, 2 * index + 1);
         treeNode.right = createTree(root, 2 * index + 2);
@@ -25,12 +27,12 @@ public class TreeUtils {
         int index = 0;
         while (index < root.length) {
             TreeNode node = queue.poll();
-            if (index + 1 < root.length && root[index + 1] != null){
+            if (index + 1 < root.length && root[index + 1] != null) {
                 node.left = new TreeNode(root[index + 1]);
                 queue.offer(node.left);
             }
             index++;
-            if (index + 1 < root.length && root[index + 1] != null){
+            if (index + 1 < root.length && root[index + 1] != null) {
                 node.right = new TreeNode(root[index + 1]);
                 queue.offer(node.right);
             }
