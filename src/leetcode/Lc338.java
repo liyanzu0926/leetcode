@@ -68,7 +68,7 @@ class Solution338_3 {
  * x每次右移一位，如果x是偶数则bits[x] = bits[x/2]
  * 如果x是奇数则bits[x] = bits[x/2] + 1。
  * 怎么判断x是奇数还是偶数呢？
- * 可以用x除以2的余数来判断，而求x余数又可以用 x & 1来计算
+ * 可以用x除以2的余数来判断，而求x余数又可以用 x & 1来计算  (因为 a % x = a & (x - 1)）
  * 综上可得bits[x] = bits[x/2] + (x & 1)
  */
 class Solution338_4 {
