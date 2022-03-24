@@ -3,6 +3,8 @@ package niuke.alibaba;
 import java.util.*;
 
 /**
+ * https://www.nowcoder.com/questionTerminal/3b6dc1447d6d4ac4b9c2d45f1d4637ea?answerType=1
+ *
  * f[0] = 2
  * f[1] = A
  * 递推公式 f[i] = A * f[i - 1] - B * f[i - 2]
