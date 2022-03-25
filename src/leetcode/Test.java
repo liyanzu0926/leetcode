@@ -6,64 +6,50 @@ import java.util.*;
 public class Test {
     public static void main(String[] args) {
         Scanner cin = new Scanner(System.in);
-        int n = cin.nextInt();
-        int[] grade = new int[n + 1];
-        for (int i = 1; i <= n; i++) {
-            grade[i] = cin.nextInt();
-        }
-        List<List<Integer>> edges = new ArrayList<>();
-        for (int i = 0; i <= n; i++) {
-            edges.add(new ArrayList<Integer>());
-        }
-        for (int i = 0; i < n - 1; i++) {
-            int u = cin.nextInt();
-            int v = cin.nextInt();
-            // 双向边
-            edges.get(u).add(v);
-            edges.get(v).add(u);
-        }
-        int minDist = Integer.MAX_VALUE;
-        for (int i = 1; i <= n; i++) {
-            int currDist = bfs(edges, i, grade);
-            if (currDist != -1) {
-                minDist = Math.min(minDist, currDist);
+        int T = cin.nextInt();
+        for (int k = 0; k < T; k++) {
+            int n = cin.nextInt();
+            int m = cin.nextInt();
+            int[][] grid = new int[n + 1][m + 1];
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= m; j++) {
+                    grid[i][j] = cin.nextInt();
+                }
             }
-        }
-        if (minDist == Integer.MAX_VALUE) {
-            System.out.println(-1);
-        } else {
-            System.out.println(minDist);
+
+            int[][] dp = new int[n + 1][m + 1];
+            dp[1][1] = 1;
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= m; j++) {
+                    if (i == n && j == m) {
+                        break;
+                    }
+                    update(grid, i, j, dp);
+                }
+            }
+            System.out.println(dp[n][m]);
         }
     }
 
-    private static int bfs(List<List<Integer>> edges, int start, int[] grade) {
-        int size = grade.length;
-        boolean[] visited = new boolean[size];
-        Deque<Integer> queue = new LinkedList<>();
-        queue.offer(start);
-        visited[start] = true;
-        // last记录当前层有多少个结点，相当于指向当前层的最后一个结点
-        // 每出队一个结点first就加1，当first=last时，说明当前层所有结点都已出队，则树的深度加1
-        int currLevelNodeNum = 1;
-        int dist = 0;
-        while (!queue.isEmpty()) {
-            int u = queue.poll();
-            currLevelNodeNum--;
-            if (u != start && grade[u] == grade[start]) {
-                return dist;
-            }
-            for (Integer v : edges.get(u)) {
-                if (!visited[v]) {
-                    queue.offer(v);
-                    visited[v] = true;
-                }
-            }
-            // 当前层所有结点都已出队
-            if (currLevelNodeNum == 0) {
-                currLevelNodeNum = queue.size();
-                dist++;
-            }
+    private static void update(int[][] grid, int i, int j, int[][] dp) {
+        int n = grid.length - 1;
+        int m = grid[0].length - 1;
+        int energy = grid[i][j];
+        int rowEnd = Math.min(i + energy, n);
+        int colEnd = Math.min(j + energy, m);
+        for (int x = i + 1; x <= rowEnd; x++) {
+            dp[x][j] = (dp[x][j] + dp[i][j]) % 10000;
         }
-        return -1;
+        for (int y = j + 1; y <= colEnd; y++) {
+            dp[i][y] = (dp[i][y] + dp[i][j]) % 10000;
+        }
+        rowEnd--;
+        colEnd--;
+        for (int x = i + 1; x <= rowEnd; x++) {
+            for (int y = j + 1; y <= colEnd; y++) {
+                dp[x][y] = (dp[x][y] + dp[i][j]) % 10000;
+            }
+            colEnd--;
+        }
     }
 }
