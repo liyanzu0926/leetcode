@@ -15,7 +15,11 @@ import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
-        Integer[] nums = {5,4,null,3,null,2};
-        TreeNode tree = TreeUtils.createTreeBylevelOrder(nums);
+
+        for (int i = 0; i < 20; i++) {
+//            System.out.println(((int) (2 + Math.random() * 11)));
+//            System.out.println(((int) (2 + Math.random() * (11 - 2 + 1))));
+            System.out.println(new Random().nextInt(15 - 5 + 1) + 5);
+        }
     }
 }
