@@ -16,10 +16,6 @@ import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
-        Car car = new BaoMaCarFactory().createCar();
-        car.print();
-        Car car1 = new BenChiCarFactory().createCar();
-        car1.print();
 
     }
 }
