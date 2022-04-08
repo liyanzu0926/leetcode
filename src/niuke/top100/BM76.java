@@ -1,15 +1,11 @@
-package test;
+package niuke.top100;
 
 import java.util.*;
 
-public class Test {
-    public static void main(String[] args) {
-        String str = "basdfasdfasdfasdfas";
-        String pattern = "basdf.*asdf.*asdf.*asdf.*s";
-        System.out.println(match(str, pattern));
-    }
 
-    public static boolean match(String str, String pattern) {
+public class BM76 {
+
+    public boolean match(String str, String pattern) {
         // write code here
         int len1 = str.length();
         int len2 = pattern.length();
@@ -31,11 +27,11 @@ public class Test {
                         dp[i][j] = false;
                     }
                 } else {
+
                     // 判断pattern '*'之前的字符是否和str当前字符匹配
                     if (isMatch(str.charAt(i - 1), pattern.charAt(j - 2))) {
-                        // 如果上面匹配则继续用pattern ‘*’之前的字符和str当前字符的前一个字符比较
-                        // 或者把pattern '*'前面的字符看作出现0次
-                        dp[i][j] = dp[i - 1][j] || dp[i - 1][j - 2];
+                        //‘*’之前的字符取0次 || ‘*’之前的字符取多次
+                        dp[i][j] = dp[i][j - 2] || dp[i - 1][j];
                     } else {
                         dp[i][j] = dp[i][j - 2];
                     }
@@ -46,7 +42,7 @@ public class Test {
     }
 
     // 判断当前两个字符是否匹配
-    private static boolean isMatch(char ch1, char ch2) {
+    private boolean isMatch(char ch1, char ch2) {
         if (ch1 == ch2 || ch2 == '.') {
             return true;
         }
