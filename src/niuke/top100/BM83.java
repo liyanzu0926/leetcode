@@ -2,7 +2,7 @@ package niuke.top100;
 
 import java.util.*;
 
-public class BM83g {
+public class BM83 {
     public String trans(String s, int n) {
         // write code here
         String[] arr = s.split(" ", -1);
