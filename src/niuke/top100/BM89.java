@@ -17,7 +17,7 @@ class Interval {
     }
 }
 
-class Solution {
+class BM89 {
     public ArrayList<Interval> merge(ArrayList<Interval> intervals) {
         if (intervals == null || intervals.size() == 0) {
             return intervals;
