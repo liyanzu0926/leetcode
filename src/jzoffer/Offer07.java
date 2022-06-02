@@ -7,7 +7,7 @@ import leetcode.TreeNode;
  * @Author lww
  * @Date 2022/6/1 11:54
  */
-public class JZ07 {
+public class Offer07 {
 }
 
 class Solution07_1 {

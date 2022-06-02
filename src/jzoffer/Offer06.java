@@ -7,7 +7,7 @@ import leetcode.ListNode;
  * @Author lww
  * @Date 2022/5/31 12:24
  */
-public class JZ06 {
+public class Offer06 {
 }
 
 /**

@@ -5,7 +5,7 @@ package jzoffer;
  * @Author lww
  * @Date 2022/5/31 11:55
  */
-public class JZ04 {
+public class Offer04 {
 }
 
 class Solution04_1 {

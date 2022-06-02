@@ -8,7 +8,7 @@ import java.util.LinkedList;
  * @Author lww
  * @Date 2022/6/1 12:03
  */
-public class JZ09 {
+public class Offer09 {
 }
 
 class CQueue {
