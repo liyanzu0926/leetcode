@@ -4,8 +4,7 @@ import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
-        String s = "123";
-        int[][] arr = new int[2][2];
-        System.out.println(arr.length);
+        String s = "12e3";
+        System.out.println(s.indexOf("e"));
     }
 }
