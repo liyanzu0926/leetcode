@@ -11,9 +11,9 @@ public class Offer65 {
 class Solution65_1 {
     public int add(int a, int b) {
         while (b != 0) {
-            int c = (a & b) << 1;
-            a ^= b;
-            b = c;
+            int carry = a & b; // 进位
+            a = a ^ b; // 本位
+            b = carry << 1; // 进位整体左移，交错相加
         }
         return a;
     }
