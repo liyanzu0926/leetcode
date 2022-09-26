@@ -60,3 +60,25 @@ class Solution027_1 {
         mid.next = midNext;
     }
 }
+
+class Solution27_2 {
+    ListNode left = null;
+
+    public boolean isPalindrome(ListNode head) {
+        left = head;
+        return check(head);
+    }
+
+    private boolean check(ListNode right) {
+        if (right != null) {
+            if (!check(right.next)) {
+                return false;
+            }
+            if (left.val != right.val) {
+                return false;
+            }
+            left = left.next;
+        }
+        return true;
+    }
+}
