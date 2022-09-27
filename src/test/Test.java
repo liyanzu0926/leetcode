@@ -9,6 +9,8 @@ public class Test {
         String str = "aB 123 ,c";
         String s = str.toLowerCase();
         System.out.println(s);
+        List<Integer> list = new ArrayList<>();
+        Map<Integer, Integer> lmap = new LinkedHashMap<>();
     }
 }
 
