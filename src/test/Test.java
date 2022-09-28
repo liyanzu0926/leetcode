@@ -11,6 +11,8 @@ public class Test {
         System.out.println(s);
         List<Integer> list = new ArrayList<>();
         Map<Integer, Integer> lmap = new LinkedHashMap<>();
+        PriorityQueue<Integer> heap = new PriorityQueue<>();
+        
     }
 }
 
