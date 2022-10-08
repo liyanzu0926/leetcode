@@ -14,6 +14,8 @@ public class Test {
 //        Map<Integer, Integer> lmap = new LinkedHashMap<>();
 //        PriorityQueue<Integer> heap = new PriorityQueue<>();
 //        Collection<Integer> values = map.values();
+        Integer[] array = {3, 1, 5, 4, 2};
+        Arrays.sort(array, (a, b) -> array[a] - array[b]);
 
     }
 }
