@@ -8,14 +8,12 @@ public class Test {
         Set<Integer> set = new HashSet<>();
         Map<Integer, Integer> map = new HashMap<>();
         String str = "-";
-//        String s = str.toLowerCase();
-//        System.out.println(s);
-//        List<Integer> list = new ArrayList<>();
-//        Map<Integer, Integer> lmap = new LinkedHashMap<>();
-//        PriorityQueue<Integer> heap = new PriorityQueue<>();
-//        Collection<Integer> values = map.values();
         Integer[] array = {3, 1, 5, 4, 2};
-        Arrays.sort(array, (a, b) -> array[a] - array[b]);
+        Arrays.sort(array, (a, b) -> a - b);
+        StringBuffer sb = new StringBuffer();
+        ArrayList<Integer> list = new ArrayList<>();
+        String str1 = "12345";
+        System.out.println(str1.substring(2));
 
     }
 }
