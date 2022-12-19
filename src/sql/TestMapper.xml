@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sql.TestMapper">
+
+    <select id="sql511" resultType="java.lang.String">
+        select
+          player_id, min(event_date) as first_login
+        from Activity
+        group by player_id;
+    </select>
+
+    <select id="sql512" resultType="java.lang.String">
+        select
+          player_id, device_id
+        from Activity
+        where (player_id, event_date) in
+        (
+            select
+                player_id, min(event_date)
+            from Activity
+            group by player_id
+        );
+    </select>
+
+    <select id="sql534" resultType="java.lang.String">
+        select
+            t1.player_id, t1.event_date, sum(t2.games_played) as games_played_so_far
+        from Activity as t1, Activity as t2
+        where
+            t1.player_id = t2.player_id and t1.event_date >= t2.event_date
+        group by t1.player_id, t1.event_date;
+    </select>
+</mapper>
