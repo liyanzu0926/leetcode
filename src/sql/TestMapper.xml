@@ -84,4 +84,40 @@
         left join Activity as t2
         on t1.player_id = t2.player_id and datediff(t2.event_date, t1.first_login) = 1
     </select>
+
+    <select id="sql570_1" resultType="java.lang.String">
+        select
+          e1.name
+        from
+          Employee as e1,
+          (select
+              managerId
+           from
+              Employee
+           group by
+              managerId
+           having count(managerId) >= 5
+          ) as e2
+        where e1.id = e2.managerId
+    </select>
+
+    <select id="sql574_1" resultType="java.lang.String">
+        select
+            c.name
+        from
+        Candidate as c,
+        (
+            select
+                candidateId
+            from
+                Vote
+            group by
+                candidateId
+            order by
+                count(id) desc
+            limit 1
+        ) as v
+        where
+            c.id = v.candidateId
+    </select>
 </mapper>
