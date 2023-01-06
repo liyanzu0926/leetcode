@@ -21,4 +21,12 @@ public interface TestMapper {
     String sql570_1();
 
     String sql574_1();
+
+    String sql577_1();
+
+    String sql578_1();
+
+    String sql578_2();
+
+    String sql578_3();
 }

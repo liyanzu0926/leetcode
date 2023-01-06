@@ -120,4 +120,84 @@
         where
             c.id = v.candidateId
     </select>
+
+    <select id="sql577_1" resultType="java.lang.String">
+        select
+          e.name as 'name',
+          b.bonus as bonus
+        from
+          Employee as e
+        left join
+          Bonus as b
+        on
+          e.empId = b.empId
+        where
+          b.bonus is null or b.bonus < 1000
+    </select>
+
+    <select id="sql578_1" resultType="java.lang.String">
+        select
+            s1.question_id as survey_log
+        from
+            (
+                select
+                    question_id,
+                    count(question_id) as answer_cnt
+                from
+                    SurveyLog
+                where
+                    action = 'answer'
+                group by
+                    question_id
+            ) as s1
+        left join
+            (
+                select
+                    question_id,
+                    count(question_id) as show_cnt
+                from
+                    SurveyLog
+                where
+                    action = 'show'
+                group by
+                    question_id
+            ) as s2
+        on
+            s1.question_id = s2.question_id
+        order by
+            s1.answer_cnt / s2.show_cnt desc, s1.question_id asc
+        limit 1
+    </select>
+
+    <select id="sql578_2" resultType="java.lang.String">
+        select
+            question_id as survey_log
+        from
+            (
+                select
+                    question_id,
+                    sum(if(action = 'show', 1, 0)) as show_cnt,
+                    sum(if(action = 'answer', 1, 0)) as answer_cnt
+                from
+                    SurveyLog
+                group by
+                    question_id
+            ) as t1
+        order by
+            answer_cnt / show_cnt desc, question_id asc
+        limit 1
+    </select>
+
+    <select id="sql578_3" resultType="java.lang.String">
+        select
+            question_id as survey_log
+        from
+            SurveyLog
+        group by
+            question_id
+        order by
+            sum(if(action = 'answer', 1, 0)) / sum(if(action = 'show', 1, 0)) desc,
+            question_id asc
+        limit 1
+    </select>
 </mapper>
