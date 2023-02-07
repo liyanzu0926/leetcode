@@ -13,8 +13,7 @@ public class Test {
         StringBuffer sb = new StringBuffer();
         ArrayList<Integer> list = new ArrayList<>();
         String str1 = "12345";
-        System.out.println(str1.substring(2));
-
+//        System.out.println(str1.substring(2));
     }
 }
 
